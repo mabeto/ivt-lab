@@ -26,7 +26,7 @@ mvn test
 
 As this is a really simple project, you can use the command-line build tool and a light-weight IDE like the [Atom](https://atom.io/) editor. Just be sure to enable collapsing directories (_File / Settings / Packages / tree-view / Collapse directories_).
 
-## Nagy változtatás. Overview
+##Overview
 
 The project represents an alpha version of a spaceship.
 
