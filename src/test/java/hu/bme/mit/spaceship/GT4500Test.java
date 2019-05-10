@@ -36,22 +36,92 @@ public class GT4500Test {
 	verify(secondary, times(0)).fire(1);
     assertEquals(true, result);
   }
+  
+   @Test
+  public void  primaryfire(){
+    // Arrange
+	when(primary.getTorpedoCount()).thenReturn(10);
+	when(primary.isEmpty()).thenReturn(false);
+	when(primary.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+	verify(primary, times(1)).fire(1);
+	verify(secondary, times(0)).fire(1);
+    assertEquals(true, result);
+  }
+  
+   @Test
+  public void secondaryfire(){
+    // Arrange
+	when(primary.getTorpedoCount()).thenReturn(0);
+	when(secondary.getTorpedoCount()).thenReturn(10);
+	when(primary.isEmpty()).thenReturn(true);
+	when(secondary.isEmpty()).thenReturn(false);
+	when(secondary.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+	 boolean result1 = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+	verify(primary, times(0)).fire(1);
+	verify(secondary, times(2)).fire(1);
+    assertEquals(true, result);
+  }
+  
+   @Test
+  public void third (){
+    // Arrange
+	when(primary.isEmpty()).thenReturn(false);
+	when(secondary.isEmpty()).thenReturn(true);
+	when(primary.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+	verify(primary, times(1)).fire(1);
+	verify(secondary, times(0)).fire(1);
+    assertEquals(true, result);
+  }
+  
+   @Test
+  public void fourd(){
+    // Arrange
+	
+
+    // Act
+   
+
+    // Assert
+	
+
+  }
+  
+  
+   @Test
+  public void fifth(){
+    // Arrange
+	
+
+    // Act
+  
+
+    // Assert
+  }
 
   @Test
   public void fireTorpedo_All_Success(){
     // Arrange
-	when(primary.getTorpedoCount()).thenReturn(10);
-	when(secondary.getTorpedoCount()).thenReturn(10);
-	when(primary.isEmpty()).thenReturn(false);
-	when(secondary.isEmpty()).thenReturn(false);
-	when(primary.fire(1)).thenReturn(true);
-	when(secondary.fire(1)).thenReturn(true);
 
     // Act
-    boolean result = ship.fireTorpedo(FiringMode.ALL);
+
 
     // Assert
-    assertEquals(true, result);
+ 
   }
 
 }
